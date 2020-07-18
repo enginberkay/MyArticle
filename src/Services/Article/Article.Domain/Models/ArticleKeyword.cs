@@ -10,6 +10,11 @@ namespace Content.Domain.Models
 
         public string Keyword { get; set; }
 
-        public Article Article { get; set; }
+        public virtual Article Article { get; set; }
+
+        public ArticleKeyword(string keyword)
+        {
+            Keyword = keyword;
+        }
     }
 }

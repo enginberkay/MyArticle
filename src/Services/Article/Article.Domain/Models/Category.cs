@@ -10,6 +10,11 @@ namespace Content.Domain.Models
 
         public string Name { get; set; }
 
-        public ICollection<Article> Articles { get; set; }
+        public virtual ICollection<Article> Articles { get; set; }
+
+        public Category(string name)
+        {
+            Name = name;
+        }
     }
 }

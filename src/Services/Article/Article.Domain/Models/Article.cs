@@ -15,8 +15,16 @@ namespace Content.Domain.Models
 
         public string Summary { get; set; }
 
-        public ICollection<ArticleKeyword> Keywords { get; set; }
+        public virtual ICollection<ArticleKeyword> Keywords { get; set; }
 
-        public Category Category { get; set; }
+        public virtual Category Category { get; set; }
+
+        public Article(string title, string content, bool isDraft, string summary)
+        {
+            Title = title;
+            Content = content;
+            IsDraft = isDraft;
+            Summary = summary;
+        }
     }
 }

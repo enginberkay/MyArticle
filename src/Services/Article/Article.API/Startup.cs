@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Content.Domain;
+using Content.Domain.Services.Articles;
 using Content.Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -31,6 +33,8 @@ namespace Content.API
                 options.UseNpgsql(
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllers();
+            services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
+            services.AddTransient(typeof(IArticleService), typeof(ArticleService));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,15 +45,17 @@ namespace Content.API
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            //app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                //endpoints.MapControllers();
+                endpoints.MapControllerRoute(
+                    name: "api", pattern: "api/{controller}/{action}/{id?}");
             });
         }
     }

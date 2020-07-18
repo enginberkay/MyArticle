@@ -3,6 +3,7 @@ using Content.Domain.Repositories;
 using Content.Infrastructure.Repositories;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Content.Infrastructure
 {
@@ -24,7 +25,7 @@ namespace Content.Infrastructure
 
         public ICategoryRepository CategoryRepository => _categoryRepository = _categoryRepository ?? new CategoryRepository(_context);
 
-        public int CommitAsync()
+        public int Commit()
         {
             return _context.SaveChanges();
         }

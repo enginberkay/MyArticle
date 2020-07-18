@@ -22,7 +22,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Content.Infrastructure", "S
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{6198C257-F4F6-43CB-9AF0-5A5272C31948}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Article.UnitTests", "Services\Article\Tests\Article.UnitTests\Article.UnitTests.csproj", "{32500902-3016-4AC9-8D4C-5CFBF628F579}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Content.UnitTests", "Services\Article\Tests\Article.UnitTests\Content.UnitTests.csproj", "{32500902-3016-4AC9-8D4C-5CFBF628F579}"
 	ProjectSection(ProjectDependencies) = postProject
 		{627A4E54-9670-4D1A-9FF8-344280E74DDD} = {627A4E54-9670-4D1A-9FF8-344280E74DDD}
 	EndProjectSection

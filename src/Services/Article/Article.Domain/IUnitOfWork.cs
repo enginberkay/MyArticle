@@ -1,11 +1,14 @@
 ﻿using Content.Domain.Repositories;
 using System;
+using System.Threading.Tasks;
 
 namespace Content.Domain
 {
     public interface IUnitOfWork : IDisposable
     {
-        int CommitAsync();
+        int Commit();
+
+        void Rollback();
 
         IArticleRepository ArticleRepository { get; }
 
