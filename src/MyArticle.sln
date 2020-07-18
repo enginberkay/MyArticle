@@ -7,16 +7,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{C4
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Article", "Article", "{420579CE-E87A-498F-8763-A4C93D895D58}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Article.API", "Services\Article\Article.API\Article.API.csproj", "{627A4E54-9670-4D1A-9FF8-344280E74DDD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Content.API", "Services\Article\Article.API\Content.API.csproj", "{627A4E54-9670-4D1A-9FF8-344280E74DDD}"
 	ProjectSection(ProjectDependencies) = postProject
 		{711CF3AD-E7B3-4A5E-A847-C92F278D9778} = {711CF3AD-E7B3-4A5E-A847-C92F278D9778}
+		{E69E22FB-760D-45CA-BC48-AC011CFC8590} = {E69E22FB-760D-45CA-BC48-AC011CFC8590}
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Article.Domain", "Services\Article\Article.Domain\Article.Domain.csproj", "{711CF3AD-E7B3-4A5E-A847-C92F278D9778}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Content.Domain", "Services\Article\Article.Domain\Content.Domain.csproj", "{711CF3AD-E7B3-4A5E-A847-C92F278D9778}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Article.Infrastructure", "Services\Article\Article.Infrastructure\Article.Infrastructure.csproj", "{E69E22FB-760D-45CA-BC48-AC011CFC8590}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Content.Infrastructure", "Services\Article\Article.Infrastructure\Content.Infrastructure.csproj", "{E69E22FB-760D-45CA-BC48-AC011CFC8590}"
 	ProjectSection(ProjectDependencies) = postProject
-		{627A4E54-9670-4D1A-9FF8-344280E74DDD} = {627A4E54-9670-4D1A-9FF8-344280E74DDD}
 		{711CF3AD-E7B3-4A5E-A847-C92F278D9778} = {711CF3AD-E7B3-4A5E-A847-C92F278D9778}
 	EndProjectSection
 EndProject

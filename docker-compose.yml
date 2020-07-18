@@ -1,0 +1,16 @@
+version: '3.4'
+
+services:
+    db:
+        image: postgres
+        environment:
+          - POSTGRES_USER=root
+          - POSTGRES_PASSWORD=root
+          - POSTGRES_DB=myarticle
+        ports:
+          - "54320:5432"
+        volumes:
+          - pgdata:/var/lib/postgresql/data
+volumes:
+  pgdata:
+    driver: local

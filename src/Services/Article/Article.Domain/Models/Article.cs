@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Article.Domain.Models
+namespace Content.Domain.Models
 {
     public class Article
     {
