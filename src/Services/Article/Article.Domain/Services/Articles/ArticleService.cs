@@ -57,10 +57,12 @@ namespace Content.Domain.Services.Articles
 
         }
 
-        //List<Article> SearchByTitle(string title);
+        public List<Article> Search(string payload)
+        {
+            SearchingArticleFacade facade = new SearchingArticleFacade(_unitOfWork);
+            return facade.Search(payload);
+        }
 
-        //List<Article> SearchByKeyword(string keyword);
-
-        //List<Article> Search(string payload);
+        //List<Article> ListAll(int limit);
     }
 }

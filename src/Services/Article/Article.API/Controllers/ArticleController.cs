@@ -39,5 +39,12 @@ namespace Content.API.Controllers
             _articleService.Update(articleDTO);
             return Ok();
         }
+
+        [HttpGet]
+        public IActionResult Search(string payload)
+        {
+            var model = _articleService.Search(payload);
+            return Ok(model);
+        }
     }
 }

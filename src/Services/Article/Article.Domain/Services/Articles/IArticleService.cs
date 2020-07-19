@@ -1,5 +1,6 @@
 ﻿using Content.Domain.Dto;
 using Content.Domain.Models;
+using System.Collections.Generic;
 
 namespace Content.Domain.Services.Articles
 {
@@ -11,10 +12,6 @@ namespace Content.Domain.Services.Articles
 
         void Update(Article article);
 
-        //List<Article> SearchByTitle(string title);
-
-        //List<Article> SearchByKeyword(string keyword);
-
-        //List<Article> Search(string payload);
+        List<Article> Search(string payload);
     }
 }
