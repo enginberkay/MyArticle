@@ -46,5 +46,12 @@ namespace Content.API.Controllers
             var model = _articleService.Search(payload);
             return Ok(model);
         }
+
+        [HttpGet]
+        public IActionResult List(int? limit, int? start)
+        {
+            List<Article> articles = _articleService.ListAll(limit, start);
+            return Ok(articles);
+        }
     }
 }

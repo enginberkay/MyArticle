@@ -63,6 +63,11 @@ namespace Content.Domain.Services.Articles
             return facade.Search(payload);
         }
 
-        //List<Article> ListAll(int limit);
+        public List<Article> ListAll(int? limit = 15, int? start = 0)
+        {
+            return _unitOfWork.ArticleRepository.GetAll()
+                .Skip(start??0)
+                .Take(limit??15).ToList();
+        }
     }
 }

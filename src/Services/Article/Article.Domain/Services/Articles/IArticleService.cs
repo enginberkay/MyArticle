@@ -13,5 +13,7 @@ namespace Content.Domain.Services.Articles
         void Update(Article article);
 
         List<Article> Search(string payload);
+
+        List<Article> ListAll(int? limit = 15, int? start = 0);
     }
 }
