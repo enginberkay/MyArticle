@@ -25,5 +25,11 @@ namespace Content.API.Controllers
             return Accepted();
         }
 
+        [HttpDelete]
+        public IActionResult DeleteArticle(int id)
+        {
+            _articleService.Delete(id);
+            return Ok();
+        }
     }
 }

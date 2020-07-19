@@ -6,7 +6,7 @@ namespace Content.Domain.Services.Articles
     {
         void Save(ArticleDTO article);
 
-        //void Delete(int id);
+        void Delete(int id);
 
         //void Update(int id, Article article);
 

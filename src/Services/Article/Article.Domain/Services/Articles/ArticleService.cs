@@ -35,7 +35,13 @@ namespace Content.Domain.Services.Articles
                 return persistentData.CreateModel(articleDTO);
         }
 
-        //void Delete(int id);
+        public void Delete(int id)
+        {
+            Article article = _unitOfWork.ArticleRepository.GetById(id);
+            _unitOfWork.ArticleKeyWordRepository.RemoveRange(article.Keywords);
+            _unitOfWork.ArticleRepository.Remove(article);
+            _unitOfWork.Commit();
+        }
 
         //void Update(int id, Article article);
 

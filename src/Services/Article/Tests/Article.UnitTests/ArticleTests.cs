@@ -18,6 +18,7 @@ namespace Content.UnitTests
     {
         private readonly IUnitOfWork _unitofwork;
         //private readonly Mock<IUnitOfWork> _unitofwork;
+        private readonly IArticleService _articleService;
 
         public ArticleTests()
         {
@@ -27,6 +28,7 @@ namespace Content.UnitTests
             ArticleDbContext context = new ArticleDbContext(options);
             _unitofwork = new UnitOfWork(context);
             //_unitofwork = new Mock<IUnitOfWork>();
+            _articleService = new ArticleService(_unitofwork);
         }
 
         [Theory]
@@ -60,9 +62,13 @@ namespace Content.UnitTests
         [MemberData(nameof(SampleDataGenerator.GetArticles), MemberType = typeof(SampleDataGenerator))]
         public void SaveAnArticle(ArticleDTO articles)
         {
-            ArticleService articleService = new ArticleService(_unitofwork);
+            _articleService.Save(articles);
+        }
 
-            articleService.Save(articles);
+        [Fact]
+        public void DeleteArticle()
+        {
+            _articleService.Delete(1);
         }
     }
 }
