@@ -12,9 +12,12 @@ namespace Content.Domain.Models
 
         public virtual ICollection<Article> Articles { get; set; }
 
-        public Category(string name)
+        public Category(int id, string name)
         {
+            Id = id;
             Name = name;
         }
+
+        public Category() { }
     }
 }

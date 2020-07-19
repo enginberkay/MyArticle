@@ -1,9 +1,13 @@
-﻿using Content.Domain.Dto;
+﻿using AutoMapper.Internal;
+using Content.Domain.Dto;
 using Content.Domain.Models;
 using Content.Domain.Services.Articles.Decarator;
+using Content.Domain.Services.Articles.Facades;
+using Content.Domain.Services.Articles.Mapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 
 namespace Content.Domain.Services.Articles
@@ -43,7 +47,15 @@ namespace Content.Domain.Services.Articles
             _unitOfWork.Commit();
         }
 
-        //void Update(int id, Article article);
+        public void Update(Article inputModel)
+        {
+            UpdatingArticleFacade updatingArticleFacade = new UpdatingArticleFacade(_unitOfWork);
+            updatingArticleFacade.UpdateBody(inputModel);
+            updatingArticleFacade.UpdateKeyword(inputModel);
+            updatingArticleFacade.UpdateCategory(inputModel);
+            _unitOfWork.Commit();
+
+        }
 
         //List<Article> SearchByTitle(string title);
 

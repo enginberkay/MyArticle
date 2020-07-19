@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Content.Domain.Dto;
+using Content.Domain.Models;
 using Content.Domain.Services.Articles;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -17,7 +18,7 @@ namespace Content.API.Controllers
         {
             _articleService = articleService;
         }
-        
+
         [HttpPost]
         public IActionResult SaveAnArticle([FromBody] ArticleDTO articleDTO)
         {
@@ -29,6 +30,13 @@ namespace Content.API.Controllers
         public IActionResult DeleteArticle(int id)
         {
             _articleService.Delete(id);
+            return Ok();
+        }
+
+        [HttpPut]
+        public IActionResult UpdateArticle([FromBody] Article articleDTO)
+        {
+            _articleService.Update(articleDTO);
             return Ok();
         }
     }

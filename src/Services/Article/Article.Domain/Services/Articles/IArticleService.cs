@@ -1,4 +1,5 @@
 ﻿using Content.Domain.Dto;
+using Content.Domain.Models;
 
 namespace Content.Domain.Services.Articles
 {
@@ -8,7 +9,7 @@ namespace Content.Domain.Services.Articles
 
         void Delete(int id);
 
-        //void Update(int id, Article article);
+        void Update(Article article);
 
         //List<Article> SearchByTitle(string title);
 

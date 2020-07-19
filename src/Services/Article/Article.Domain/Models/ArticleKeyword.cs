@@ -12,9 +12,12 @@ namespace Content.Domain.Models
 
         public virtual Article Article { get; set; }
 
-        public ArticleKeyword(string keyword)
+        public ArticleKeyword(int id, string keyword)
         {
+            Id = id;
             Keyword = keyword;
         }
+
+        public ArticleKeyword() { }
     }
 }

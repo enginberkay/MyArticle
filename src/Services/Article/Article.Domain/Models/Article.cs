@@ -19,12 +19,15 @@ namespace Content.Domain.Models
 
         public virtual Category Category { get; set; }
 
-        public Article(string title, string content, bool isDraft, string summary)
+        public Article(int id, string title, string content, bool isDraft, string summary)
         {
+            Id = id;
             Title = title;
             Content = content;
             IsDraft = isDraft;
             Summary = summary;
         }
+
+        public Article() { }
     }
 }

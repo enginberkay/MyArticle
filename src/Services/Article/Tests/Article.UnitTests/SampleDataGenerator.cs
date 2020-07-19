@@ -1,12 +1,13 @@
 ﻿using Content.Domain.Dto;
 using Content.Domain.Models;
+using Newtonsoft.Json.Serialization;
 using System.Collections.Generic;
 
 namespace Content.UnitTests
 {
     public class SampleDataGenerator
     {
-        public static IEnumerable<object[]> GetArticles()
+        public static IEnumerable<object[]> GetArticleDTOs()
         {
             yield return new object[]
             {
@@ -34,7 +35,7 @@ namespace Content.UnitTests
             };
         }
 
-        public static IEnumerable<object[]> GetAnArticle()
+        public static IEnumerable<object[]> GetAnArticleDTO()
         {
             yield return new object[]
             {
