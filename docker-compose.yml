@@ -2,15 +2,20 @@ version: '3.4'
 
 services:
     db:
+        container_name: "myarticledb"
         image: postgres
         environment:
           - POSTGRES_USER=root
           - POSTGRES_PASSWORD=root
           - POSTGRES_DB=myarticle
-        ports:
-          - "54320:5432"
         volumes:
           - pgdata:/var/lib/postgresql/data
+    myarticle:
+        build:
+            context: src/
+            dockerfile: Services/Article/Article.API/Dockerfile
+        ports:
+            - "5000:80"
 volumes:
   pgdata:
     driver: local
