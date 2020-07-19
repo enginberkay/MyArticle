@@ -2,7 +2,7 @@
 Basic Article API
 
 A simple step to start project
--- Run below command at "MyArticle" folder
+- Run below command at "MyArticle" folder
 ```
 docker-compose up
 ```
