@@ -17,6 +17,8 @@ namespace Content.Domain.Models
 
         public virtual ICollection<ArticleKeyword> Keywords { get; set; }
 
+        public int? CategoryId { get; set; }
+
         public virtual Category Category { get; set; }
 
         public Article(int id, string title, string content, bool isDraft, string summary)

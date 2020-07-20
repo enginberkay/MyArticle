@@ -8,5 +8,8 @@ namespace Content.Domain.Repositories
     public interface IArticleKeyWordRepository : IRepository<ArticleKeyword>
     {
         IEnumerable<Article> GetArticlesByKeyWord(Expression<Func<ArticleKeyword, bool>> predicate);
+
+        IEnumerable<ArticleKeyword> GetKeywordsWithoutRelated(Expression<Func<ArticleKeyword, bool>> predicate);
+
     }
 }

@@ -65,9 +65,15 @@ namespace Content.Domain.Services.Articles
 
         public List<Article> ListAll(int? limit = 15, int? start = 0)
         {
-            return _unitOfWork.ArticleRepository.GetAll()
-                .Skip(start??0)
-                .Take(limit??15).ToList();
+            List<Article> list = _unitOfWork.ArticleRepository.GetAll()
+                .Skip(start ?? 0)
+                .Take(limit ?? 15).ToList();
+            list.ForEach(x =>
+            {
+                x.Keywords = _unitOfWork.ArticleKeyWordRepository.GetKeywordsWithoutRelated(y => y.Article == x).ToList();
+                x.Category = _unitOfWork.CategoryRepository.GetCategorysWithoutRelated(y => y.Id == x.CategoryId);
+            });
+            return list;
         }
     }
 }

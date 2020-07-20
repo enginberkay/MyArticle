@@ -9,14 +9,14 @@ namespace Content.Domain.Services.Articles.Facades
 {
     public class SearchingArticleFacade
     {
-        public IUnitOfWork UnitOfWork { get; }
+        public IUnitOfWork _unitOfWork { get; }
         private SearchingByTitle _searchingByTitle;
         private SearchingByKeyword _searchingByKeyword;
         private SearchingByContent _searchingByContent;
 
         public SearchingArticleFacade(IUnitOfWork unitOfWork)
         {
-            UnitOfWork = unitOfWork;
+            _unitOfWork = unitOfWork;
             _searchingByTitle = new SearchingByTitle(unitOfWork);
             _searchingByKeyword = new SearchingByKeyword(unitOfWork);
             _searchingByContent = new SearchingByContent(unitOfWork);
@@ -42,10 +42,12 @@ namespace Content.Domain.Services.Articles.Facades
             var titles = _searchingByTitle.SearchByTitle(payload);
             var keywords = _searchingByKeyword.SearchByKeyword(payload);
             var contents = _searchingByContent.SearchByContent(payload);
-            IEnumerable<Article> total;
-            total = titles.Concat(keywords);
-            total = total.Concat(contents);
-            total.Distinct();
+            List<Article> total = titles.Concat(keywords).Concat(contents).Distinct().ToList();
+            total.ForEach(x =>
+            {
+                x.Keywords = _unitOfWork.ArticleKeyWordRepository.GetKeywordsWithoutRelated(y => y.Article == x).ToList();
+                x.Category = _unitOfWork.CategoryRepository.GetCategorysWithoutRelated(y => y.Id == x.CategoryId);
+            });
             return total.ToList();
         }
 

@@ -25,7 +25,7 @@ namespace Content.Domain.Services.Articles.Facades.UpdatingArticle
             currentKeywords.Select(x =>
             {
                 ArticleKeyword inKey = getItemFrom(x.Id, incoming.Keywords);
-                if (inKey.Keyword != x.Keyword)
+                if (inKey != null && inKey.Keyword != x.Keyword)
                     x.Keyword = inKey.Keyword;
                 return x;
             }).ToList();

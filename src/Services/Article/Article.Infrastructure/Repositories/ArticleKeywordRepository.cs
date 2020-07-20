@@ -20,6 +20,18 @@ namespace Content.Infrastructure.Repositories
                 .Where(predicate)
                 .Include(x => x.Article)
                 .Select(x => x.Article);
-        } 
+        }
+
+        public IEnumerable<ArticleKeyword> GetKeywordsWithoutRelated(Expression<Func<ArticleKeyword, bool>> predicate)
+        {
+            return Context.Set<ArticleKeyword>().Where(predicate)
+                .Select(z => new ArticleKeyword
+                {
+                    Id = z.Id,
+                    Keyword = z.Keyword
+                }).ToList();
+        }
+
+
     }
 }
