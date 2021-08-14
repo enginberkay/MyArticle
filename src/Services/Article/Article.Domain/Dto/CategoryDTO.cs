@@ -8,8 +8,6 @@ namespace Content.Domain.Dto
     {
         public string Name { get; set; }
 
-        public CategoryDTO() { }
-
         public CategoryDTO(string name)
         {
             Name = name;

@@ -8,8 +8,6 @@ namespace Content.Domain.Dto
     {
         public string Keyword { get; set; }
 
-        public ArticleKeywordDTO() { }
-
         public ArticleKeywordDTO(string keyword)
         {
             Keyword = keyword;

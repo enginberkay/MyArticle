@@ -19,11 +19,7 @@ namespace Content.Domain.Dto
         public List<ArticleKeywordDTO> Keywords { get; set; }
 
         public CategoryDTO Category { get; set; }
-
-        public ArticleDTO()
-        {
-
-        }
+        
         public ArticleDTO(string title, string content, bool isDraft, string summary, List<ArticleKeywordDTO> articleKeywords, CategoryDTO category)
         {
             Title = title;
