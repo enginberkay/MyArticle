@@ -62,9 +62,11 @@ Yine bireysel çalışmalarımda kullandığım bir teknoloji. Sorunsuz ve kolay
 İş hayatımda ve tüm bireysel çalışmalarımda kullandığım bir teknoloji. Her aşamada çok kolaylık sağlayan bir sistem. Çok hızlı bir şekilde uygulamayı ayağa kaldırabildiğim yada deploy edebildiğim nimet.
 - Bogus: 
 Unittestler için kurallara göre dinamik veri oluşturan yardımcı kütüphane
+- Swagger:
+API dokümantasyonu için kullanılan harika bir uygulama. Input bilgilerini ve örnek requesti göstermesi işi oldukça kolaylaştırıyor. Aynı zamanda test yapmaya olanak sağlıyor.
 
 ## ilerde Tamamlamak İstediğim İşler
 - [ ] Microservis mimarisi kurmak. Makalelerin görsellerini yükleyeceği bir uygulama ve yazar bilgilerini tutan bir uygulama yapmak.
-- [ ] Swagger kurulumu. Servisler testleri için kolay bir arayüz
+- [X] Swagger kurulumu. Servisler testleri için kolay bir arayüz
 - [ ] ELK stack. sistemin loglarını elasticsearch üzerinde tutmak ve kibana ile monitör etmek.
 - [ ] IdentityServer kurulumu.
