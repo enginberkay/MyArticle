@@ -48,18 +48,20 @@ Runtime zamanında nesnenin özellikleri değişiyorsa bu pattern kullanılmalı
 
 
 ## Kullanılan Teknolojiler
-- Entity Framework
+- Entity Framework:
 Daha önce bireysel projemde kullandığım bir teknoloji. Veritabanı işlemlerini kolayca çözebildiğim bir platform.
-- Linq
+- Linq:
 Daha önce hem bireysel çalışmalarımda hemde iş hayatımda kullandığım. Objeler üzerinde çalışırken büyük kolaylık sağlayan query kütüphanesi.
-- Xunit
+- Xunit:
 Daha önce bireysel çalışmalarımda kullandığım bir kütüphane. Unit test için kullandığım bir kütüphane. Gayet kolay kullanımı var ve hazırladığım datalar ile birden çok case test edebiliyorum.
-- AutoMapper
+- AutoMapper:
 Bireysel çalışmalarımda kullandığım kütüphane. Nesnelerin dönüşümlerinde kullandığım bir kütüphanedir. Basit bir kaç tanım ile 2 nesnesi dönüştürebilirsiniz.
-- PostgreSql
+- PostgreSql:
 Yine bireysel çalışmalarımda kullandığım bir teknoloji. Sorunsuz ve kolay bir sistem.
 - Docker
 İş hayatımda ve tüm bireysel çalışmalarımda kullandığım bir teknoloji. Her aşamada çok kolaylık sağlayan bir sistem. Çok hızlı bir şekilde uygulamayı ayağa kaldırabildiğim yada deploy edebildiğim nimet.
+- Bogus: 
+Unittestler için kurallara göre dinamik veri oluşturan yardımcı kütüphane
 
 ## ilerde Tamamlamak İstediğim İşler
 - [ ] Microservis mimarisi kurmak. Makalelerin görsellerini yükleyeceği bir uygulama ve yazar bilgilerini tutan bir uygulama yapmak.
