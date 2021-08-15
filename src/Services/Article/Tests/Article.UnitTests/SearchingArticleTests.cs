@@ -36,7 +36,7 @@ namespace Content.UnitTests
                 articles.AsQueryable().Where(condition)
                 );
             SearchingByTitle searching = new SearchingByTitle(_mockUnitofwork.Object);
-            var result = searching.SearchByTitle("my article");
+            var result = searching.SearchByTitle(articles.FirstOrDefault().Title);
             Assert.Single(result);
             _mockUnitofwork.Verify(x => x.ArticleRepository.Find(It.IsAny<Expression<Func<Article, bool>>>()), Times.Once);
         }
@@ -51,7 +51,7 @@ namespace Content.UnitTests
                 articles.AsQueryable().Where(condition)
                 );
             SearchingByContent searching = new SearchingByContent(_mockUnitofwork.Object);
-            var result = searching.SearchByContent("awesome");
+            var result = searching.SearchByContent(articles.FirstOrDefault().Content[..5]);
             Assert.NotEmpty(result);
             _mockUnitofwork.Verify(x => x.ArticleRepository.Find(It.IsAny<Expression<Func<Article, bool>>>()), Times.Once);
         }
@@ -66,7 +66,7 @@ namespace Content.UnitTests
                 articles.AsQueryable().Where(condition).Select(x => x.Article)
                 );
             SearchingByKeyword searching = new SearchingByKeyword(_mockUnitofwork.Object);
-            var result = searching.SearchByKeyword("findme");
+            var result = searching.SearchByKeyword(articles.FirstOrDefault().Keyword);
             Assert.NotEmpty(result);
             _mockUnitofwork.Verify(x => x.ArticleKeyWordRepository.GetArticlesByKeyWord(It.IsAny<Expression<Func<ArticleKeyword, bool>>>()), Times.Once);
         }

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using System.Text;
 
 namespace Content.Domain.Services.Articles.Facades.UpdatingArticle
@@ -20,27 +21,32 @@ namespace Content.Domain.Services.Articles.Facades.UpdatingArticle
 
         public void UpdateArticleKeywords(Article incoming)
         {
-            List<ArticleKeyword> currentKeywords = _unitOfWork.ArticleKeyWordRepository.Find(x => x.Article == incoming).ToList();
+            List<ArticleKeyword> storedKeywords =
+                _unitOfWork.ArticleKeyWordRepository.Find(x => x.Article == incoming).ToList();
 
-            currentKeywords.Select(x =>
+            var currentKeywords = storedKeywords.Select(x =>
             {
-                ArticleKeyword inKey = getItemFrom(x.Id, incoming.Keywords);
+                ArticleKeyword inKey = GetItemFrom(x.Id, incoming.Keywords);
                 if (inKey != null && inKey.Keyword != x.Keyword)
                     x.Keyword = inKey.Keyword;
                 return x;
             }).ToList();
-            var newRecord = incoming.Keywords.Where(x => x.Id == 0).ToList();
-            if (newRecord.Count > 0)
-            {
-                var article = _unitOfWork.ArticleRepository.GetById(incoming.Id);
-                newRecord.Where(x => x.Article == null).Select(x => x.Article = article).ToList();
-                _unitOfWork.ArticleKeyWordRepository.AddRange(newRecord);
-            }
+            var newRecords = incoming.Keywords.Where(x => !currentKeywords.Contains(x)).ToList();
+            if (newRecords.Count <= 0) return;
+
+            var article = _unitOfWork.ArticleRepository.GetById(incoming.Id);
+            newRecords = newRecords.Where(x => x.Article == null)
+                .Select(x =>
+                {
+                    x.Article = article;
+                    return x;
+                }).ToList();
+            _unitOfWork.ArticleKeyWordRepository.AddRange(newRecords);
         }
 
-        ArticleKeyword getItemFrom(int index, ICollection<ArticleKeyword> articles)
+        private static ArticleKeyword GetItemFrom(int index, IEnumerable<ArticleKeyword> articles)
         {
-            return articles.Where(x => x.Id == index).FirstOrDefault();
+            return articles.FirstOrDefault(x => x.Id == index);
         }
     }
 }
