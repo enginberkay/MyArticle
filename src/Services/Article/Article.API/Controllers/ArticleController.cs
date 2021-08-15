@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Content.Domain.Dto;
 using Content.Domain.Models;
 using Content.Domain.Services.Articles;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Content.API.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class ArticleController : ControllerBase
     {
         public IArticleService _articleService { get; }
@@ -40,14 +38,14 @@ namespace Content.API.Controllers
             return Ok();
         }
 
-        [HttpGet]
+        [HttpGet("Search")]
         public IActionResult Search(string payload)
         {
             var model = _articleService.Search(payload);
             return Ok(model);
         }
 
-        [HttpGet]
+        [HttpGet("List")]
         public IActionResult List(int? limit, int? start)
         {
             List<Article> articles = _articleService.ListAll(limit, start);

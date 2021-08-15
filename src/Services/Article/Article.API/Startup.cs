@@ -1,19 +1,13 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Content.Domain;
 using Content.Domain.Services.Articles;
 using Content.Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
 
 namespace Content.API
 {
@@ -35,6 +29,15 @@ namespace Content.API
             services.AddControllers();
             services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
             services.AddTransient(typeof(IArticleService), typeof(ArticleService));
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "My Article API",
+                    Description = "A simple example ASP.NET Core Web API"
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,6 +53,9 @@ namespace Content.API
             app.UseRouting();
 
             //app.UseAuthorization();
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "My Article API V1"); });
 
             app.UseEndpoints(endpoints =>
             {
