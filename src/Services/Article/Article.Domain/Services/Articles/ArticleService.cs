@@ -29,14 +29,10 @@ namespace Content.Domain.Services.Articles
 
         public Article createModel(ArticleDTO articleDTO)
         {
-            IPersistentData persistentData = new ArticleModel();
+            persistentData = new ArticleModel();
             if (articleDTO.Category != null)
-            {
-                ArticleModelWithCategory modelWithCategory = new ArticleModelWithCategory(_unitOfWork, persistentData);
-                return modelWithCategory.CreateModel(articleDTO);
-            }
-            else
-                return persistentData.CreateModel(articleDTO);
+                persistentData = new ArticleModelWithCategory(_unitOfWork, persistentData);
+            return persistentData.CreateModel(articleDTO);
         }
 
         public void Delete(int id)
